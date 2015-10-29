@@ -8,6 +8,7 @@ bind9-packages:
 /etc/bind/named.conf.options:
   file.managed:
     - source: salt://rainmaker/core/services/v1_0/bind9/files/named.conf.options
+    - template: jinja
     - user: root
     - group: root
     - mode: 644
@@ -26,8 +27,6 @@ bind9-packages:
     - mode: 755
     - makedirs: True
 
-#cp $DIR/../config/services/named.conf.rainmaker/* "$SERVICES_LXC_ROOT_FS/etc/bind/named.conf.rainmaker/"
-
 /etc/bind/named.conf.rainmaker/example.conf:
   file.managed:
     - source: salt://rainmaker/core/services/v1_0/bind9/files/named.conf.rainmaker/example.conf
@@ -38,6 +37,7 @@ bind9-packages:
 /etc/bind/named.conf.rainmaker/rainmaker.conf:
   file.managed:
     - source: salt://rainmaker/core/services/v1_0/bind9/files/named.conf.rainmaker/rainmaker.conf
+    - template: jinja
     - user: root
     - group: root
     - mode: 644
@@ -64,16 +64,17 @@ bind9-packages:
     - group: root
     - mode: 644
 
-/etc/bind/db.rainmaker/db.10.100.0:
+/etc/bind/db.rainmaker/{{ salt['pillar.get']('bind9_rainmaker_reverse_zone_filename', 'db.10.100.0') }}:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/bind9/files/db.rainmaker/db.10.100.0
+    - source: salt://rainmaker/core/services/v1_0/bind9/files/db.rainmaker/{{ salt['pillar.get']('bind9_rainmaker_reverse_zone_filename', 'db.10.100.0') }}
     - user: root
     - group: root
     - mode: 644
 
-/etc/bind/db.rainmaker/db.rainmaker.localdev:
+/etc/bind/db.rainmaker/{{ salt['pillar.get']('bind9_rainmaker_forward_zone_filename', 'db.rainmaker.localdev') }}:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/bind9/files/db.rainmaker/db.rainmaker.localdev
+    - source: salt://rainmaker/core/services/v1_0/bind9/files/db.rainmaker/{{ salt['pillar.get']('bind9_rainmaker_forward_zone_filename', 'db.rainmaker.localdev') }}
+    - template: jinja
     - user: root
     - group: root
     - mode: 644

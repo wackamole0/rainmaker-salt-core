@@ -79,6 +79,7 @@ dhcpd-packages:
 /etc/dhcp/dhcpd.subnet.conf.d/10.100.0.0.conf:
   file.managed:
     - source: salt://rainmaker/core/services/v1_0/dhcpd/files/dhcpd.subnet.conf.d/10.100.0.0.conf
+    - template: jinja
     - user: root
     - group: root
     - mode: 644

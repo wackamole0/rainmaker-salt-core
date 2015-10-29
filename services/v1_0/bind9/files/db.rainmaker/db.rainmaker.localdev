@@ -11,8 +11,8 @@ $TTL 604800
                 IN      NS              ns.rainmaker.localdev.
 
 ; name servers - A records
-ns              IN      A               10.100.0.2
+ns              IN      A               {{ salt['pillar.get']('bind9_listen_address', 'db.10.100.0.2') }}
 
 ; Define hostname -> IP pairs which you wish to resolve
-@               IN      A               10.100.0.254
-services        IN      A               10.100.0.2
+@               IN      A               {{ salt['pillar.get']('bind9_rainmaker_host_ip_prefix', 'db.10.100.0') }}.254
+services        IN      A               {{ salt['pillar.get']('bind9_rainmaker_host_ip_prefix', 'db.10.100.0') }}.2
