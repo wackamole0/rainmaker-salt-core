@@ -66,14 +66,14 @@ bind9-packages:
 
 /etc/bind/db.rainmaker/{{ salt['pillar.get']('bind9_rainmaker_reverse_zone_filename', 'db.10.100.0') }}:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/bind9/files/db.rainmaker/{{ salt['pillar.get']('bind9_rainmaker_reverse_zone_filename', 'db.10.100.0') }}
+    - source: salt://rainmaker/core/services/v1_0/bind9/files/db.rainmaker/db.10.100.0
     - user: root
     - group: root
     - mode: 644
 
 /etc/bind/db.rainmaker/{{ salt['pillar.get']('bind9_rainmaker_forward_zone_filename', 'db.rainmaker.localdev') }}:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/bind9/files/db.rainmaker/{{ salt['pillar.get']('bind9_rainmaker_forward_zone_filename', 'db.rainmaker.localdev') }}
+    - source: salt://rainmaker/core/services/v1_0/bind9/files/db.rainmaker/db.rainmaker.localdev
     - template: jinja
     - user: root
     - group: root
@@ -85,4 +85,3 @@ bind9:
 set bind9 service defaults:
   cmd.run:
     - name: update-rc.d bind9 defaults
-

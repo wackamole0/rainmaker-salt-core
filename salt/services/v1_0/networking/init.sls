@@ -17,7 +17,7 @@ stop eth0:
   cmd.run:
     - name: ifdown eth0
 
-start eth0
+start eth0:
   cmd.run:
     - name: ifup eth0
 
