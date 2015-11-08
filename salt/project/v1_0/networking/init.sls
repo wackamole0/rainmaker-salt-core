@@ -19,17 +19,22 @@
     - group: root
     - mode: 644
 
+add br0:
+  cmd.run:
+    - name: ip link add br0 type bridge
+    - onlyif: 'test "$(ip link show br0 2>&1)" == "Device \"br0\" does not exist."'
+
 stop br0:
   cmd.run:
-    - name: ip link set br0 down
+    - name: ifdown br0
 
 stop eth0:
   cmd.run:
-    - name: ip link set eth0 down
+    - name: ifdown eth0
 
 start br0:
   cmd.run:
-    - name: ip link set br0 up
+    - name: ifup br0
 
 /etc/iptables/rules.v4:
   file.managed:
