@@ -1,10 +1,9 @@
 {
-  "type": "core",
-  "name": "core",
-  "profiles": [
-    {
-      "version":"1.0"
-    }
-  ],
-  "name": "core"
+    "type": "core",
+    "name": "core",
+    "profiles": [
+        {
+          "version":"1.0"
+        }
+    ]
 }
