@@ -24,17 +24,9 @@ add br0:
     - name: ip link add br0 type bridge
     - onlyif: 'test "$(ip link show br0 2>&1)" == "Device \"br0\" does not exist."'
 
-stop br0:
+restart br0:
   cmd.run:
-    - name: ifdown br0
-
-stop eth0:
-  cmd.run:
-    - name: ifdown eth0
-
-start br0:
-  cmd.run:
-    - name: ifup br0
+    - name: "ifdown br0 && sleep 5 && ifup br0 && sleep 5"
 
 /etc/iptables/rules.v4:
   file.managed:
@@ -46,19 +38,3 @@ start br0:
 restore iptables rules:
   cmd.run:
     - name: iptables-restore < /etc/iptables/rules.v4
-
-#/etc/hostname:
-#  file.managed:
-#    - content: rainmaker.localdev
-
-#set hostname:
-#  cmd.run:
-#    - name: hostname rainmaker.localdev
-
-#/etc/hosts:
-#  file.managed:
-#    - source: salt://rainmaker/core/root/v1_0/networking/files/hosts.conf
-#    - user: root
-#    - group: root
-#    - mode: 644
-#    - replace: False

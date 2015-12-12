@@ -12,10 +12,6 @@
     - group: root
     - mode: 644
 
-stop eth0:
+restart eth0:
   cmd.run:
-    - name: ifdown eth0
-
-start eth0:
-  cmd.run:
-    - name: ifup eth0
+    - name: "ifdown eth0 && sleep 5 && ifup eth0 && sleep 5"

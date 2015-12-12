@@ -32,17 +32,9 @@ add br0:
     - name: ip link add br0 type bridge
     - onlyif: 'test "$(ip link show br0 2>&1)" == "Device \"br0\" does not exist."'
 
-stop br0:
+restart br0:
   cmd.run:
-    - name: ifdown br0
-
-stop eth1:
-  cmd.run:
-    - name: ifdown eth1
-
-start br0:
-  cmd.run:
-    - name: ifup br0
+    - name: "ifdown br0 && sleep 5 && ifup br0 && sleep 5"
 
 /etc/iptables/rules.v4:
   file.managed:
