@@ -17,14 +17,14 @@ lxc-package:
     - group: root
     - mode: 644
 
-/var/cache/lxc/rainmaker/project
+/var/cache/lxc/rainmaker/project:
   file.directory:
     - user: root
     - group: root
     - mode: 755
     - makedirs: True
 
-/var/cache/lxc/rainmaker/branch
+/var/cache/lxc/rainmaker/branch:
   file.directory:
     - user: root
     - group: root
