@@ -26,7 +26,7 @@ add br0:
 
 restart br0:
   cmd.run:
-    - name: "ifdown br0 && sleep 5 && ifup br0 && sleep 5"
+    - name: "ifdown br0; sleep 5; ifup br0; sleep 5"
 
 /etc/iptables/rules.v4:
   file.managed:

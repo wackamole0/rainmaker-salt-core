@@ -14,4 +14,4 @@
 
 restart eth0:
   cmd.run:
-    - name: "ifdown eth0 && sleep 5 && ifup eth0 && sleep 5"
+    - name: "ifdown eth0; sleep 5; ifup eth0; sleep 5"
