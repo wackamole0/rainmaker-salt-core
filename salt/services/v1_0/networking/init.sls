@@ -1,13 +1,13 @@
 /etc/network/interfaces:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/networking/files/interfaces
+    - source: salt://{{ sls|replace(".", "/") }}files/interfaces
     - user: root
     - group: root
     - mode: 644
 
 /etc/network/interfaces.d/eth0.cfg:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/networking/files/eth0.cfg
+    - source: salt://{{ sls|replace(".", "/") }}/files/eth0.cfg
     - template: jinja
     - user: root
     - group: root
@@ -27,7 +27,7 @@ set hostname:
 
 /etc/hosts:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/networking/files/hosts.conf
+    - source: salt://{{ sls|replace(".", "/") }}/files/hosts.conf
     - user: root
     - group: root
     - mode: 644

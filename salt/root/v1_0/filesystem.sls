@@ -50,4 +50,4 @@ lxc_mount:
 
 add markers to fstab:
   cmd.script:
-    - name: salt://rainmaker/core/root/v1_0/files/add-markers-to-fstab.php
+    - name: salt://{{ sls|replace(".", "/") }}/files/add-markers-to-fstab.php

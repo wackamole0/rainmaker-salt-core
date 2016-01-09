@@ -1,13 +1,13 @@
 /etc/network/interfaces:
   file.managed:
-    - source: salt://rainmaker/core/branch/v1_0/networking/files/interfaces
+    - source: salt://{{ sls|replace(".", "/") }}/files/interfaces
     - user: root
     - group: root
     - mode: 644
 
 /etc/network/interfaces.d/eth0.cfg:
   file.managed:
-    - source: salt://rainmaker/core/branch/v1_0/networking/files/eth0.cfg
+    - source: salt://{{ sls|replace(".", "/") }}/files/eth0.cfg
     - user: root
     - group: root
     - mode: 644

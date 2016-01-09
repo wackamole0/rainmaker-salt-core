@@ -12,7 +12,7 @@ nfs-kernel-server-package:
 
 /etc/exports:
   file.managed:
-    - source: salt://rainmaker/core/root/v1_0/nfs_server/files/nfs_exports
+    - source: salt://{{ sls|replace(".", "/") }}/files/nfs_exports
     - template: jinja
     - user: root
     - group: root

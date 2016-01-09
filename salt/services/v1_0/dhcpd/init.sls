@@ -5,14 +5,14 @@ dhcpd-packages:
 
 /etc/dhcp/dhcpd.conf:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/dhcpd/files/dhcpd.conf
+    - source: salt://{{ sls|replace(".", "/") }}/files/dhcpd.conf
     - user: root
     - group: root
     - mode: 644
 
 /etc/dhcp/dhcpd.host.conf:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/dhcpd/files/dhcpd.host.conf
+    - source: salt://{{ sls|replace(".", "/") }}/files/dhcpd.host.conf
     - user: root
     - group: root
     - mode: 644
@@ -20,7 +20,7 @@ dhcpd-packages:
 
 /etc/dhcp/dhcpd.class.conf:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/dhcpd/files/dhcpd.class.conf
+    - source: salt://{{ sls|replace(".", "/") }}/files/dhcpd.class.conf
     - user: root
     - group: root
     - mode: 644
@@ -28,7 +28,7 @@ dhcpd-packages:
 
 /etc/dhcp/dhcpd.subnet.conf:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/dhcpd/files/dhcpd.subnet.conf
+    - source: salt://{{ sls|replace(".", "/") }}/files/dhcpd.subnet.conf
     - user: root
     - group: root
     - mode: 644
@@ -43,14 +43,14 @@ dhcpd-packages:
 
 /etc/dhcp/dhcpd.host.conf.d/localdev.example.cluster.conf:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/dhcpd/files/dhcpd.host.conf.d/localdev.example.cluster.conf
+    - source: salt://{{ sls|replace(".", "/") }}/files/dhcpd.host.conf.d/localdev.example.cluster.conf
     - user: root
     - group: root
     - mode: 644
 
 /etc/dhcp/dhcpd.host.conf.d/localdev.example.conf:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/dhcpd/files/dhcpd.host.conf.d/localdev.example.conf
+    - source: salt://{{ sls|replace(".", "/") }}/files/dhcpd.host.conf.d/localdev.example.conf
     - user: root
     - group: root
     - mode: 644
@@ -64,7 +64,7 @@ dhcpd-packages:
 
 /etc/dhcp/dhcpd.class.conf.d/localdev.example.conf:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/dhcpd/files/dhcpd.class.conf.d/localdev.example.conf
+    - source: salt://{{ sls|replace(".", "/") }}/files/dhcpd.class.conf.d/localdev.example.conf
     - user: root
     - group: root
     - mode: 644
@@ -78,7 +78,7 @@ dhcpd-packages:
 
 /etc/dhcp/dhcpd.subnet.conf.d/10.100.0.0.conf:
   file.managed:
-    - source: salt://rainmaker/core/services/v1_0/dhcpd/files/dhcpd.subnet.conf.d/10.100.0.0.conf
+    - source: salt://{{ sls|replace(".", "/") }}/files/dhcpd.subnet.conf.d/10.100.0.0.conf
     - template: jinja
     - user: root
     - group: root

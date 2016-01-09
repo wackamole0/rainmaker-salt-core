@@ -1,20 +1,20 @@
 /etc/network/interfaces:
   file.managed:
-    - source: salt://rainmaker/core/project/v1_0/networking/files/interfaces
+    - source: salt://{{ sls|replace(".", "/") }}/files/interfaces
     - user: root
     - group: root
     - mode: 644
 
 /etc/network/interfaces.d/eth0.cfg:
   file.managed:
-    - source: salt://rainmaker/core/project/v1_0/networking/files/eth0.cfg
+    - source: salt://{{ sls|replace(".", "/") }}/files/eth0.cfg
     - user: root
     - group: root
     - mode: 644
 
 /etc/network/interfaces.d/br0.cfg:
   file.managed:
-    - source: salt://rainmaker/core/project/v1_0/networking/files/br0.cfg
+    - source: salt://{{ sls|replace(".", "/") }}/files/br0.cfg
     - user: root
     - group: root
     - mode: 644
@@ -30,7 +30,7 @@ restart br0:
 
 /etc/iptables/rules.v4:
   file.managed:
-    - source: salt://rainmaker/core/project/v1_0/networking/files/iptables-rules.v4
+    - source: salt://{{ sls|replace(".", "/") }}/files/iptables-rules.v4
     - user: root
     - group: root
     - mode: 644

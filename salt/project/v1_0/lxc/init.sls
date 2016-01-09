@@ -12,7 +12,7 @@ lxc-package:
 
 /etc/lxc/default.conf:
   file.managed:
-    - source: salt://rainmaker/core/project/v1_0/lxc/files/default.conf
+    - source: salt://{{ sls|replace(".", "/") }}/files/default.conf
     - user: root
     - group: root
     - mode: 644
