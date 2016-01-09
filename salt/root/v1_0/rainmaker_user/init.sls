@@ -24,25 +24,9 @@ rainmaker-user:
     - mode: 700
     - makedirs: True
 
-/home/rainmaker/.ssh/id_rsa:
-  file.managed:
-    - source: salt://rainmaker/core/root/v1_0/rainmaker_user/files/rainmaker_id_rsa
-    - user: rainmaker
-    - group: rainmaker
-    - mode: 600
-    - replace: False
-
-/home/rainmaker/.ssh/id_rsa.pub:
-  file.managed:
-    - source: salt://rainmaker/core/root/v1_0/rainmaker_user/files/rainmaker_id_rsa.pub
-    - user: rainmaker
-    - group: rainmaker
-    - mode: 600
-    - replace: False
-
 /home/rainmaker/.ssh/authorized_keys:
   file.managed:
-    - source: salt://rainmaker/core/root/v1_0/rainmaker_user/files/rainmaker_authorized_keys
+    - source: salt://{{ sls|replace(".", "/") }}/files/rainmaker_authorized_keys
     - user: rainmaker
     - group: rainmaker
     - mode: 600
@@ -50,7 +34,7 @@ rainmaker-user:
 
 /etc/sudoers.d/rainmaker:
   file.managed:
-    - source: salt://rainmaker/core/root/v1_0/rainmaker_user/files/rainmaker_sudoers
+    - source: salt://{{ sls|replace(".", "/") }}/files/rainmaker_sudoers
     - user: root
     - group: root
     - mode: 400

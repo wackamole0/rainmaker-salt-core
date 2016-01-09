@@ -47,3 +47,7 @@ lxc_mount:
     - mkmnt: False
     - require:
       - file: /var/lib/lxc
+
+add markers to fstab:
+  cmd.script:
+    - name: salt://{{ sls|replace(".", "/") }}/files/add-markers-to-fstab.php
